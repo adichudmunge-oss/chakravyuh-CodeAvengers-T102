@@ -114,3 +114,12 @@ CircuitForge aims to make electronics education more interactive, accessible, an
 
 **CircuitForge — Explore. Experiment. Engineer.**
 
+## Development Update
+
+CircuitForge is being developed as an interactive learning platform for Electronics and Telecommunication students. The current focus is improving accessibility to electronics concepts through interactive learning modules, logic exercises, sensor simulations, and coding practice.
+
+### Current Development Priorities
+
+* Improve the learning experience and website usability.
+* Expand interactive electronics learning activities.
+* Test existing features and improve reliability.
