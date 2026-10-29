@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080f1d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080f1d'/%3E%3Cpath d='M16 20h12l8 12h12M16 44h10l8-12m10-8 8 8-8 8' fill='none' stroke='%2358e1e8' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <title>CircuitForge — ENTC Learning Lab</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h6l3 5h7M4 17h5l3-5M17 8l3 4-3 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="7" r="1.5" fill="currentColor"/><circle cx="4" cy="17" r="1.5" fill="currentColor"/><circle cx="20" cy="12" r="1.5" fill="currentColor"/></svg></div>
+        <div><div class="brand-name">Circuit<span>Forge</span></div><div class="brand-caption">ENTC learning lab</div></div>
+      </div>
+      <div class="nav-label">Workspace</div>
+      <nav class="nav-list" id="navigation">
+        <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span>Overview</button>
+        <button class="nav-item" data-view="modules"><span class="nav-icon">▦</span>Learning modules</button>
+        <button class="nav-item" data-view="logic"><span class="nav-icon">∧</span>Logic playground</button>
+        <button class="nav-item" data-view="sensors"><span class="nav-icon">⌁</span>Sensor lab</button>
+        <button class="nav-item" data-view="quiz"><span class="nav-icon">?⃝</span>Knowledge check</button>
+        <button class="nav-item" data-view="code"><span class="nav-icon">&lt;/&gt;</span>Code practice</button>
+        <button class="nav-item" data-view="mentor"><span class="nav-icon">◈</span>Circuit Mentor</button>
+      </nav>
+      <div class="side-bottom">
+        <div class="workspace-tag"><div class="tag-row"><span class="live-dot"></span>Local lab ready</div><p>Your progress stays in this browser.</p></div>
+        <div class="sidebar-foot">Built for curious circuit thinkers<br>Revision 01.24 · Offline-friendly</div>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><div class="brand-mark" aria-hidden="true">⌁</div><span>CircuitForge</span></div>
+        <div class="breadcrumb"><span>Learning lab</span> &nbsp;/&nbsp; <strong id="crumb">Overview</strong></div>
+        <div class="top-actions"><span class="today" id="date-display"></span><button class="avatar" id="open-settings" aria-label="Open local preferences">CF</button></div>
+      </header>
+      <div class="content">
+        <section class="view active" id="view-home" aria-labelledby="home-title">
+          <div class="hero">
+            <div class="hero-copy">
+              <div class="eyebrow">Your bench is ready</div>
+              <h1 id="home-title">Stop Memorising.<br><em>Start Experimenting.</em></h1>
+              <p>A practical learning space for ENTC and ECE—build intuition with interactive logic, sensor simulations, quick checks, and Arduino-style practice.</p>
+              <div class="toolbar"><button class="button primary" data-go="modules">Enter the Lab <span aria-hidden="true">→</span></button><button class="button secondary" data-go="logic">Explore Simulations</button></div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <svg viewBox="0 0 180 180"><circle class="ring" cx="90" cy="90" r="66"/><circle class="ring" cx="90" cy="90" r="47"/><path class="trace" d="M23 90h29l13-20h24l14 20h54M90 24v28l17 11v24M90 156v-27l18-12M31 53h18l8 12M148 128h-18l-9-12"/><circle class="node" cx="23" cy="90" r="4"/><circle class="node" cx="157" cy="90" r="4"/><circle class="node" cx="90" cy="24" r="4"/><circle class="node" cx="90" cy="156" r="4"/><circle class="node" cx="90" cy="90" r="12"/><path class="trace" d="M87 96l7-12h-6l4-8"/></svg>
+            </div>
+          </div>
+          <div class="scope-label">Demonstration scope · activities available in this local lab</div>
+          <div class="scope-strip" aria-label="Available learning activities">
+            <div class="scope-item"><strong>05</strong><span>guided modules</span></div>
+            <div class="scope-item"><strong>07</strong><span>logic gate models</span></div>
+            <div class="scope-item"><strong>03</strong><span>simulated sensors</span></div>
+            <div class="scope-item"><strong>12</strong><span>quiz questions</span></div>
+          </div>
+          <div class="metrics" aria-label="Learning progress">
+            <div class="metric"><div class="metric-label">Overall progress <span class="metric-icon">↗</span></div><div class="metric-value" id="stat-progress">0<small>%</small></div></div>
+            <div class="metric"><div class="metric-label">Modules completed <span class="metric-icon">▦</span></div><div class="metric-value" id="stat-modules">0<small>/ 5</small></div></div>
+            <div class="metric"><div class="metric-label">Quiz best score <span class="metric-icon">◎</span></div><div class="metric-value" id="stat-score">—<small>/ 12</small></div></div>
+            <div class="metric"><div class="metric-label">Code challenges <span class="metric-icon">&lt;/&gt;</span></div><div class="metric-value" id="stat-code">0<small>/ 3</small></div></div>
+          </div>
+          <div class="dashboard-grid">
+            <div>
+              <div class="section-head"><div><h2>Pick up a thread</h2><p>Small experiments build sturdy intuition.</p></div><button class="text-action" data-go="modules">All modules →</button></div>
+              <div class="panel panel-pad"><div class="modules-mini" id="home-modules"></div></div>
+            </div>
+            <div>
+              <div class="section-head"><div><h2>Daily signal</h2><p>A single question, reset each day.</p></div></div>
+              <div class="panel daily-card">
+                <div class="daily-label">Question of the day · local</div>
+                <h3>One concept.<br>One clean answer.</h3>
+                <p id="daily-copy">Check your circuit intuition with a deterministic daily prompt.</p>
+                <div class="progress-track"><div class="progress-fill" id="daily-fill"></div></div>
+                <div class="progress-caption"><span id="daily-state">READY TO TRY</span><span>01 / 01</span></div>
+                <button class="button violet small" id="daily-start">Take today's check <span aria-hidden="true">→</span></button>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-grid">
+            <div><div class="section-head"><div><h2>Recently on your bench</h2><p>Your activity, saved on this device.</p></div></div><div class="panel panel-pad"><div class="recent-list" id="recent-list"></div></div></div>
+            <div><div class="section-head"><div><h2>Know your tools</h2><p>Simulations, not physical instruments.</p></div></div><div class="panel panel-pad"><div class="eyebrow">A thoughtful distinction</div><p style="font-size:12px;color:var(--muted);margin:10px 0 15px">Labs here model the underlying idea. Use a current-limited supply and proper supervision for physical experiments.</p><button class="button secondary small" data-go="sensors">Visit sensor lab</button></div></div>
+          </div>
+        </section>
+
+        <section class="view" id="view-modules" aria-labelledby="modules-title">
+          <div class="page-heading"><div><div class="eyebrow">The learning path</div><h1 id="modules-title">Five connected disciplines.</h1><p class="subhead">Move from signal-level fundamentals to systems that sense, communicate, and process the world.</p></div><button class="button secondary" data-go="quiz">Check your understanding →</button></div>
+          <div class="module-grid" id="module-grid"></div>
+        </section>
+
+        <section class="view" id="view-logic" aria-labelledby="logic-title">
+          <div class="page-heading"><div><div class="eyebrow">Interactive bench · 01</div><h1 id="logic-title">Logic gate playground</h1><p class="subhead">Change the input levels and watch the Boolean result propagate. Logic 1 represents HIGH; logic 0 represents LOW.</p></div><button class="button secondary" data-go="modules">Related: Logic &amp; Boolean algebra</button></div>
+          <div class="lab-layout">
+            <div class="panel control-panel">
+              <div class="control-head"><div><div class="eyebrow">Gate configuration</div><h2 style="margin:3px 0 0">Truth, made visible</h2></div><div class="toolbar"><label for="gate-select" class="switch-label">GATE</label><select id="gate-select" class="select-control" aria-label="Select logic gate"><option>AND</option><option>OR</option><option>NOT</option><option>NAND</option><option>NOR</option><option>XOR</option><option>XNOR</option></select></div></div>
+              <div class="toolbar" style="justify-content:flex-start;margin:0 0 15px">
+                <div class="switch-row"><span class="switch-label">A</span><button class="toggle" id="input-a" role="switch" aria-checked="false" aria-label="Input A, currently low"></button><span class="switch-label" id="a-readout">LOW · 0</span></div>
+                <div class="switch-row" id="input-b-group"><span class="switch-label">B</span><button class="toggle" id="input-b" role="switch" aria-checked="false" aria-label="Input B, currently low"></button><span class="switch-label" id="b-readout">LOW · 0</span></div>
+                <button class="button quiet small" id="logic-reset">Reset inputs</button>
+              </div>
+              <div class="logic-canvas">
+                <svg class="gate-svg" viewBox="0 0 540 220" role="img" aria-labelledby="gate-svg-title gate-svg-desc">
+                  <title id="gate-svg-title">Logic gate circuit visualization</title><desc id="gate-svg-desc">Two input wires pass through a logic gate to a status indicator.</desc>
+                  <text x="19" y="82">A</text><text id="svg-b-label" x="19" y="153">B</text>
+                  <line id="wire-a" class="wire off" x1="45" y1="78" x2="185" y2="78"/><line id="wire-b" class="wire off" x1="45" y1="144" x2="185" y2="144"/>
+                  <path id="gate-shape" class="gate-shape" d="M185 55 H238 Q305 55 305 111 Q305 167 238 167 H185 Z"/>
+                  <circle id="inversion-bubble" cx="316" cy="111" r="8" class="gate-shape" style="display:none"/>
+                  <text id="svg-gate-name" x="228" y="116">AND</text>
+                  <line id="wire-out" class="wire off" x1="305" y1="111" x2="474" y2="111"/>
+                  <circle id="output-light" class="output-light" cx="495" cy="111" r="10"/>
+                  <text x="467" y="145">OUT</text><text id="svg-out-value" x="325" y="101">0</text>
+                </svg>
+              </div>
+              <div class="gate-readout"><span>OUTPUT <strong id="logic-output">LOW · 0</strong></span><span id="logic-expression">Y = A · B</span></div>
+              <div class="truth-wrap"><table class="truth-table" aria-label="Complete truth table for selected gate"><thead><tr><th>Input A</th><th id="truth-b-head">Input B</th><th>Output Y</th></tr></thead><tbody id="truth-body"></tbody></table></div>
+            </div>
+            <aside class="explain-box"><h3><span class="bulb">◎</span><span id="gate-explain-title">AND gate</span></h3><p id="gate-explain"></p><p style="margin-top:12px;color:#8c9db4">Try every input combination and compare the live state to the truth table below.</p><button class="button secondary small" style="margin-top:14px" data-complete-module="logic">Mark this module complete</button></aside>
+          </div>
+        </section>
+
+        <section class="view" id="view-sensors" aria-labelledby="sensors-title">
+          <div class="page-heading"><div><div class="eyebrow">Interactive bench · 02</div><h1 id="sensors-title">Sensor &amp; MCU simulator</h1><p class="subhead">Move the environment, observe the readings, and see how simple firmware can respond. All values below are simulated.</p></div><button class="button secondary" data-go="modules">Related: Sensors &amp; microcontrollers</button></div>
+          <div class="sensor-grid">
+            <div class="sensor-stack">
+              <div class="panel sensor-card">
+                <div class="sensor-title"><h3>Ambient temperature</h3><span class="sensor-value" id="temp-value">24.0 °C</span></div><p>Simulated analog sensor · normal 18–32 °C</p><input type="range" id="temp-slider" min="-10" max="60" value="24" aria-label="Simulated temperature in degrees Celsius"><div class="range-labels"><span>−10 °C</span><span>60 °C</span></div><div class="sensor-gauge"><span id="temp-gauge"></span></div><span class="status" id="temp-status">WITHIN RANGE</span>
+              </div>
+              <div class="panel sensor-card">
+                <div class="sensor-title"><h3>Distance to object</h3><span class="sensor-value" id="distance-value">42 cm</span></div><p>Simulated ultrasonic echo · near-object threshold 20 cm</p><input type="range" id="distance-slider" min="2" max="200" value="42" aria-label="Simulated distance in centimeters"><div class="range-labels"><span>2 cm</span><span>200 cm</span></div><div class="sensor-gauge"><span id="distance-gauge"></span></div><span class="status" id="distance-status">CLEAR</span>
+              </div>
+              <div class="panel sensor-card">
+                <div class="sensor-title"><h3>Light level</h3><span class="sensor-value" id="light-value">68 %</span></div><p>Simulated photoresistor · dark threshold below 25%</p><input type="range" id="light-slider" min="0" max="100" value="68" aria-label="Simulated light level as a percentage"><div class="range-labels"><span>0% dark</span><span>100% bright</span></div><div class="sensor-gauge"><span id="light-gauge"></span></div><span class="status" id="light-status">BRIGHT</span>
+              </div>
+              <div class="toolbar"><button class="button secondary small" id="sensor-reset">Reset simulated environment</button><span class="switch-label">SIMULATION ONLY · NO HARDWARE CONNECTED</span></div>
+            </div>
+            <div class="sensor-stack">
+              <div class="panel monitor"><div class="control-head"><div><div class="eyebrow">Serial monitor · simulated</div><h2 style="font-size:17px;margin:3px 0 0">MCU telemetry</h2></div><span class="status">RUNNING</span></div><div class="monitor-screen" id="monitor-screen" aria-live="polite"></div></div>
+              <div class="panel panel-pad"><div class="control-head"><div><div class="eyebrow">Environment history</div><h2 style="font-size:17px;margin:3px 0 0">Event log</h2></div><button class="button quiet small" id="clear-events">Clear</button></div><div class="event-list" id="event-list" aria-live="polite"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-quiz" aria-labelledby="quiz-title">
+          <div class="page-heading"><div><div class="eyebrow">Knowledge check</div><h1 id="quiz-title">Retrieve. Reason. Repeat.</h1><p class="subhead">Twelve concise questions across core ENTC ideas. Choose once, read the explanation, then continue.</p></div><div class="toolbar"><button class="button secondary small" id="quiz-daily-mode">Today's question</button><button class="button quiet small" id="quiz-restart-top">Restart quiz</button></div></div>
+          <div class="quiz-layout">
+            <div class="panel quiz-card" id="quiz-main"></div>
+            <aside class="panel quiz-side"><div><div class="eyebrow">Current run</div><div class="metric-value" id="quiz-score">0<small> pts</small></div><p id="quiz-side-copy">Answer correctly to earn one point. Best run is saved locally.</p></div><div class="progress-track" aria-label="Quiz progress"><div class="progress-fill" id="quiz-progress"></div></div></aside>
+          </div>
+        </section>
+
+        <section class="view" id="view-code" aria-labelledby="code-title">
+          <div class="page-heading"><div><div class="eyebrow">Guided code practice</div><h1 id="code-title">Firmware starts with a pattern.</h1><p class="subhead">Edit the sketch, inspect the hint, then run a local pattern check. This is not a compiler and does not connect to a board.</p></div></div>
+          <div class="code-layout">
+            <div class="panel code-editor-card"><div class="editor-head"><div><div class="eyebrow">Arduino-style sketch</div><h3 id="challenge-editor-title">LED blink</h3></div><div class="editor-lights" aria-hidden="true"><i></i><i></i><i></i></div></div><label for="code-editor" class="switch-label" style="position:absolute;left:-9999px">Editable code for selected challenge</label><textarea id="code-editor" class="code-editor" spellcheck="false" autocapitalize="off"></textarea><div class="editor-footer"><span class="editor-note">Local validation · pattern based · not compiled</span><div class="toolbar"><button class="button secondary small" id="code-reset">Restore starter</button><button class="button primary small" id="code-check">Check my sketch →</button></div></div></div>
+            <aside>
+              <div class="panel panel-pad"><div class="eyebrow">Three guided challenges</div><h2 style="font-size:18px;margin:5px 0 13px">Choose a task</h2><div class="challenge-list" id="challenge-list"></div><div class="hint-box"><strong style="color:#d5caff">Hint</strong><br><span id="challenge-hint"></span></div><div class="feedback-console" id="code-feedback" aria-live="polite">Select a challenge, then modify the sketch or inspect the starter.</div><button class="button quiet small" id="show-solution" style="margin-top:8px">Show solution &amp; explanation</button><div class="hint-box" id="solution-box" hidden></div></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="view-mentor" aria-labelledby="mentor-title">
+          <div class="page-heading"><div><div class="eyebrow">Local study companion</div><h1 id="mentor-title">Ask Circuit Mentor.</h1><p class="subhead">A small, transparent rules-based guide for the topics in this lab. No network call, generative model, or account is involved.</p></div></div>
+          <div class="mentor-layout">
+            <div class="panel chat-panel">
+              <div class="chat-head"><div class="chat-title"><div class="mentor-avatar">CF</div><div><h3>Circuit Mentor</h3><small>Topic-matched answers · running locally</small></div></div><button class="button quiet small" id="clear-chat">Clear chat</button></div>
+              <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+              <div class="suggestion-row" id="mentor-suggestions"><button class="suggestion">Explain XOR gates with examples.</button><button class="suggestion">What is PWM?</button><button class="suggestion">How does an ultrasonic sensor work?</button><button class="suggestion">Explain the difference between analog and digital signals.</button></div>
+              <form class="chat-form" id="chat-form"><label for="chat-input" class="switch-label" style="position:absolute;left:-9999px">Ask Circuit Mentor a question</label><input id="chat-input" type="text" autocomplete="off" maxlength="240" placeholder="Ask about gates, sensors, signals, or Arduino..." required><button class="button primary" type="submit">Ask <span aria-hidden="true">↑</span></button></form>
+            </div>
+            <aside class="panel mentor-note"><span class="local-badge">RULES-BASED · LOCAL</span><h2 style="font-size:18px">A bounded guide</h2><p>Answers are curated for core concepts. It is useful for quick reminders, not a replacement for a datasheet, lab safety guidance, or your instructor.</p><ul><li>Recognizes common topic keywords and phrasing.</li><li>Offers an honest fallback when a topic is unsupported.</li><li>Conversation stays in this page; clear it any time.</li></ul><button class="button secondary small" data-go="modules">Browse the topic map</button></aside>
+          </div>
+        </section>
+
+        <section class="view" id="view-settings" aria-labelledby="settings-title">
+          <div class="page-heading"><div><div class="eyebrow">Your workspace</div><h1 id="settings-title">Local preferences</h1><p class="subhead">CircuitForge has no account or server sync. Your learning record is stored only in this browser.</p></div></div>
+          <div class="panel settings-panel"><div class="setting-row"><div><strong>Learning record</strong><p>Completed modules, quiz attempts and challenge milestones saved on this device.</p></div><span class="badge">LOCAL STORAGE</span></div><div class="setting-row"><div><strong>Reset learning progress</strong><p>Clear every saved milestone and recent activity. This cannot be undone.</p></div><button class="button secondary" id="reset-progress">Reset progress</button></div><div class="setting-row"><div><strong>Simulation safety</strong><p>Logic and sensors are visual models. No external hardware is controlled.</p></div><span class="status">SIMULATED</span></div></div>
+        </section>
+        <footer class="app-footer"><span>CircuitForge · Explore. Experiment. Engineer.</span><span>Simulated learning tools · progress stays in this browser.</span></footer>
+      </div>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <dialog class="module-dialog" id="module-dialog" aria-labelledby="module-dialog-title">
+    <div class="lesson-inner">
+      <div id="module-dialog-content"></div>
+    </div>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
